@@ -7,4 +7,12 @@
     <div class="date">
         {{ currentWeekday }}, {{ currentDate }}
     </div>
+    <div *ngIf="notes">
+      <h2>Notizen</h2>
+      <ul>
+        <li *ngFor="let note of notes">
+          {{ note.title }} - {{ note.dueDate?.toDate() }}
+        </li>
+      </ul>
+    </div>
 </div>

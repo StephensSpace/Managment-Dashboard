@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-analog-clock',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './analog-clock.html',
   styleUrl: './analog-clock.scss'
 })
@@ -14,9 +16,19 @@ export class AnalogClock implements OnInit {
   intervalId: any;
   currentWeekday: string = "";
   currentDate: string = "";
+  notes: any[] | undefined;
   @Input() clockFace: string = '/images/clockface/GoldenNumbers.png';
 
+  constructor(private firestore: Firestore) {}
+
   ngOnInit() {
+    const notesCollection = collection(this.firestore, 'profiles/webmaster1/notes');
+
+    collectionData(notesCollection, { idField: 'docId' }).subscribe(data => {
+      this.notes = data;
+      console.log('Notes from Firestore:', data);
+    });
+  
     this.runClock();
     this.getDateAndDay();
   }
