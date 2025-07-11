@@ -12,9 +12,23 @@
 }
 
 @mixin standard-box-size {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 160px;
-  height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 160px;
 }
+
+
+:host ::ng-deep .my-square-btn {
+    background-color: #c0c0c0;
+    border-radius: 4px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: aliceblue;
+}
+
