@@ -1,18 +1,14 @@
 <div class="body">
+  <div class="clock-wrapper">
     <div class="clock" [style.background]="'url(' + clockFace + ')'">
         <div class="hand hour" [style.transform]="hourStyle"></div>
         <div class="hand1 minute" [style.transform]="minuteStyle"></div>
         <div class="hand1 second" [style.transform]="secondStyle"></div>
     </div>
+  </div>
+    
     <div class="date">
         {{ currentWeekday }}, {{ currentDate }}
     </div>
-    <div *ngIf="notes">
-      <h2>Notizen</h2>
-      <ul>
-        <li *ngFor="let note of notes">
-          {{ note.title }} - {{ note.dueDate?.toDate() }}
-        </li>
-      </ul>
-    </div>
+    
 </div>
